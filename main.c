@@ -1,12 +1,8 @@
 #include <stdio.h>
-//#include <stdlib.h>
 #include <stdbool.h>
 #include "./pong.h"
 #include "./puck.h"
 #include "./paddle.h"
-
-
-
 
 int main(int argc, char *argv[]){
     if(SDL_Init(SDL_INIT_VIDEO) != 0){
@@ -34,20 +30,9 @@ int main(int argc, char *argv[]){
 
     SDL_Event e;
     SDL_Rect rect1, rect2;
-    //SDL_Renderer *renderer;
     SDL_Texture *texture1, *texture2;
-    //SDL_Window *window;
     char font_path[] = "/usr/share/fonts/truetype/freefont/FreeMonoOblique.ttf";
     bool quit = false;
-
-    /*if (argc == 1) {
-        font_path = "FreeSans.ttf";
-    } else if (argc == 2) {
-        font_path = argv[1];
-    } else {
-        fprintf(stderr, "error: too many arguments\n");
-        exit(EXIT_FAILURE);
-    }*/
 
     Puck puck;
     int score_left = 0;
@@ -75,17 +60,17 @@ int main(int argc, char *argv[]){
                 case SDL_KEYDOWN:
                     switch(e.key.keysym.sym){
                         case SDLK_a:
-                            paddle_move(&left, -1);
+                            paddle_move(&left, -5);
                             break;
                         case SDLK_z:
-                            paddle_move(&left, 1);
+                            paddle_move(&left, 5);
                             break;
 
                         case SDLK_k:
-                            paddle_move(&right, -1);
+                            paddle_move(&right, -5);
                             break;
                         case SDLK_m:
-                            paddle_move(&right, 1);
+                            paddle_move(&right, 5);
                             break;
                             
                     }
@@ -146,5 +131,3 @@ int main(int argc, char *argv[]){
 
     return EXIT_SUCCESS;
 }
-
-
