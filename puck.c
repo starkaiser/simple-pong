@@ -36,7 +36,6 @@ void get_text_and_rect(SDL_Renderer *renderer, int x, int y, char *text,
 
 void puck_set_score(int *score){
     (*score)++; 
-    //printf("%d\n", *score);
 }
 
 void puck_update(Puck *puck){
@@ -48,7 +47,7 @@ void puck_edges(Puck *puck, int *left, int *right){
     if(puck->y < 0 || puck->y > HEIGHT)
         puck->yspeed *= -1;
 
-    if(puck->x - puck->r > WIDTH){ //|| puck->x + puck->r < 0)
+    if(puck->x - puck->r > WIDTH){ 
         puck_reset(puck);
         puck_set_score(left);
     }
