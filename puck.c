@@ -1,4 +1,5 @@
 #include "./pong.h"
+#define SPEED 5
 
 double to_radians(double degrees){
     return degrees * (M_PI/180.0);
@@ -81,8 +82,8 @@ void puck_check_right(Puck *puck, Paddle *paddle){
                 else if(diff > 7*cell && diff <= 100.0)
                     angle = to_radians(135.0);
                 
-                puck->xspeed = 0.5 * cos(angle);
-                puck->yspeed = 0.5 * sin(angle);
+                puck->xspeed = SPEED * cos(angle);
+                puck->yspeed = SPEED * sin(angle);
                 puck->x = (double)paddle->x[0] - puck->r;
             }
        }
@@ -114,8 +115,8 @@ void puck_check_left(Puck *puck, Paddle *paddle){
                 angle = to_radians(30.0);
             else if(diff > 7*cell && diff <= 100.0)
                 angle = to_radians(45.0);
-            puck->xspeed = 0.5 * cos(angle);
-            puck->yspeed = 0.5 * sin(angle);
+            puck->xspeed = SPEED * cos(angle);
+            puck->yspeed = SPEED * sin(angle);
             puck->x = (double)paddle->x[3] + puck_r;
         }
     }
@@ -131,8 +132,8 @@ void puck_reset(Puck *puck){
 
     double angle = (double)rand()/RAND_MAX*(M_PI/2.0) - M_PI/4.0;
 
-    puck->xspeed = 0.5 * cos(angle);
-    puck->yspeed = 0.5 * sin(angle);
+    puck->xspeed = SPEED * cos(angle);
+    puck->yspeed = SPEED * sin(angle);
 
     if((rand()%1) < 0.5)
         puck->xspeed *= -1;
